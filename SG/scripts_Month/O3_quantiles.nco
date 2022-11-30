@@ -1,0 +1,20 @@
+*n_lev = lev.size();
+*n_time = time.size();
+*q05 = n_time / 20; 
+*q25 = n_time / 4; 
+*med = n_time / 2;
+*q75 = (3 * n_time) / 4;
+*q95 = (19 * n_time) / 20;
+O3_q05[$lev] = 0.0;
+O3_q25[$lev] = 0.0;
+O3_med[$lev] = 0.0;
+O3_q75[$lev] = 0.0;
+O3_q95[$lev] = 0.0;
+for (*i = 0; i < n_lev; ++i) {
+    *sorted = O3(:,i,0,0).sort();
+    O3_q05(i) = sorted(q05);
+    O3_q25(i) = sorted(q25);
+    O3_med(i) = (sorted(med + 1)  + sorted(med) + sorted(med - 1)) / 3.;
+    O3_q75(i) = sorted(q75);
+    O3_q95(i) = sorted(q95);
+}

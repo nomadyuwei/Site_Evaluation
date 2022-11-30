@@ -1,0 +1,20 @@
+*n_lev = lev.size();
+*n_time = time.size();
+*q05 = n_time / 20;
+*q25 = n_time / 4;
+*med = n_time / 2;
+*q75 = (3 * n_time) / 4;
+*q95 = (19 * n_time) / 20;
+H_q05[$lev] = 0.0;
+H_q25[$lev] = 0.0;
+H_med[$lev] = 0.0;
+H_q75[$lev] = 0.0;
+H_q95[$lev] = 0.0;
+for (*i = 0; i < n_lev; ++i) {
+    *sorted = H(:,i,0,0).sort();
+    H_q05(i) = sorted(q05);
+    H_q25(i) = sorted(q25);
+    H_med(i) = sorted(med);
+    H_q75(i) = sorted(q75);
+    H_q95(i) = sorted(q95);
+}
